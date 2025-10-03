@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router'; // Fixed import
+import { NavLink } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import axiosClient from '../utils/axiosClient';
 import { logoutUser } from '../authSlice';
+import '../App.css';
 
 function Homepage() {
   const dispatch = useDispatch();
@@ -71,10 +72,20 @@ function Homepage() {
         </div>
       </nav>
 
+      {/* Hero Section with Animation */}
+      <section className="hero-section">
+        <div className="hero-bg-animation"></div>
+        <div className="hero-content">
+          <h1 className="hero-title">Welcome to LeetCode Platform</h1>
+          <p className="hero-subtitle">Sharpen your coding skills, solve real-world problems, and ace your interviews!</p>
+          <a href="#problems-list" className="hero-btn">Get Started</a>
+        </div>
+      </section>
+
       {/* Main Content */}
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-4" id="problems-list">
         {/* Filters */}
-        <div className="flex flex-wrap gap-4 mb-6">
+        <div className="flex flex-wrap gap-4 mb-6 justify-center">
           {/* New Status Filter */}
           <select 
             className="select select-bordered"
@@ -110,9 +121,9 @@ function Homepage() {
         </div>
 
         {/* Problems List */}
-        <div className="grid gap-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredProblems.map(problem => (
-            <div key={problem._id} className="card bg-base-100 shadow-xl">
+            <div key={problem._id} className="card bg-base-100 shadow-xl transition-transform transform hover:scale-105 animated-card">
               <div className="card-body">
                 <div className="flex items-center justify-between">
                   <h2 className="card-title">
@@ -129,7 +140,6 @@ function Homepage() {
                     </div>
                   )}
                 </div>
-                
                 <div className="flex gap-2">
                   <div className={`badge ${getDifficultyBadgeColor(problem.difficulty)}`}>
                     {problem.difficulty}

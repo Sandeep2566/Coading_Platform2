@@ -1,0 +1,229 @@
+/* LeetCode Auth Page Styles */
+.leetcode-auth-bg {
+	background: #f7f8fa;
+	min-height: 100vh;
+	width: 100vw;
+	position: relative;
+	overflow: hidden;
+}
+.auth-card {
+	background: #fff;
+	border-radius: 18px;
+	box-shadow: 0 8px 32px #0001, 0 1.5px 4px #0001;
+	width: 370px;
+	max-width: 95vw;
+	margin: 32px 0 0 0;
+	padding: 0 0 24px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.2s both;
+}
+.auth-logo {
+	margin-top: 32px;
+	margin-bottom: 12px;
+	display: flex;
+	justify-content: center;
+}
+.auth-logo-img {
+	width: 120px;
+	height: auto;
+	object-fit: contain;
+}
+.auth-tabs {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	border-bottom: 1.5px solid #f0f1f3;
+	margin-bottom: 18px;
+}
+.auth-tab {
+	padding: 12px 32px 10px 32px;
+	font-size: 1.1rem;
+	color: #757575;
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-weight: 500;
+	border-bottom: 2.5px solid transparent;
+	transition: color 0.2s, border-bottom 0.2s;
+	text-decoration: none;
+}
+.auth-tab.active {
+	color: #ffa116;
+	border-bottom: 2.5px solid #ffa116;
+	background: none;
+}
+.auth-card-body {
+	width: 100%;
+	padding: 0 32px;
+	margin-top: 8px;
+}
+.auth-card form .form-control {
+	margin-bottom: 0;
+}
+.auth-card .btn-primary {
+	background: #ffa116;
+	color: #fff;
+	border: none;
+	font-weight: 600;
+	font-size: 1.1rem;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px #ffa11622;
+	transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.auth-card .btn-primary:hover {
+	background: #ffb84d;
+	color: #fff;
+	transform: scale(1.03);
+}
+.auth-card input.input {
+	background: #f7f8fa;
+	border-radius: 7px;
+	border: 1.5px solid #e4e6e8;
+	font-size: 1rem;
+	color: #222;
+	padding: 0.7rem 1rem;
+	margin-top: 2px;
+}
+.auth-card input.input:focus {
+	border-color: #ffa116;
+	outline: none;
+}
+.auth-card .input-error {
+	border-color: #ff6b6b;
+}
+.auth-card .text-error {
+	color: #ff6b6b;
+}
+.leetcode-auth-footer {
+	margin-top: 32px;
+	text-align: center;
+	color: #888;
+	font-size: 1.05rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+}
+.leetcode-auth-footer-icon {
+	margin-bottom: 2px;
+}
+.leetcode-auth-footer-text {
+	font-size: 1.08rem;
+	color: #888;
+}
+/* Signup/Login Animated Background */
+.signup-bg {
+	background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+	position: relative;
+	overflow: hidden;
+}
+.signup-bg::before {
+	content: '';
+	position: absolute;
+	top: -20%;
+	left: -20%;
+	width: 140%;
+	height: 140%;
+	background: radial-gradient(circle at 20% 30%, #fff3 0%, transparent 70%),
+							radial-gradient(circle at 80% 70%, #fff2 0%, transparent 80%);
+	animation: floatBg 8s ease-in-out infinite alternate;
+	z-index: 1;
+}
+.signup-bg > * {
+	position: relative;
+	z-index: 2;
+}
+
+/* Card Animation for Signup/Login */
+.animated-card-signup {
+	transition: box-shadow 0.3s, transform 0.3s;
+	box-shadow: 0 8px 32px #2575fc33;
+	animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.2s both;
+}
+.animated-card-signup:hover {
+	box-shadow: 0 12px 40px #6a11cb44;
+	transform: translateY(-6px) scale(1.04);
+}
+
+/* Hero Section Animation */
+.hero-section {
+	position: relative;
+	height: 350px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+	overflow: hidden;
+	margin-bottom: 2rem;
+}
+.hero-bg-animation {
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 1;
+	background: radial-gradient(circle at 20% 30%, #fff3 0%, transparent 70%),
+							radial-gradient(circle at 80% 70%, #fff2 0%, transparent 80%);
+	animation: floatBg 8s ease-in-out infinite alternate;
+}
+@keyframes floatBg {
+	0% { background-position: 20% 30%, 80% 70%; }
+	100% { background-position: 30% 40%, 70% 60%; }
+}
+.hero-content {
+	position: relative;
+	z-index: 2;
+	text-align: center;
+	color: #fff;
+}
+.hero-title {
+	font-size: 2.8rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	letter-spacing: 1px;
+	animation: fadeInDown 1.2s cubic-bezier(.77,0,.18,1) 0.2s both;
+}
+.hero-subtitle {
+	font-size: 1.3rem;
+	margin-bottom: 1.5rem;
+	animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.5s both;
+}
+.hero-btn {
+	display: inline-block;
+	padding: 0.7rem 2.2rem;
+	background: #fff;
+	color: #2575fc;
+	border-radius: 999px;
+	font-weight: 600;
+	font-size: 1.1rem;
+	box-shadow: 0 2px 12px #0002;
+	transition: background 0.2s, color 0.2s, transform 0.2s;
+	animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.8s both;
+}
+.hero-btn:hover {
+	background: #2575fc;
+	color: #fff;
+	transform: scale(1.07);
+}
+@keyframes fadeInDown {
+	from { opacity: 0; transform: translateY(-40px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+	from { opacity: 0; transform: translateY(40px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+/* Card Animation */
+.animated-card {
+	transition: box-shadow 0.3s, transform 0.3s;
+}
+.animated-card:hover {
+	box-shadow: 0 8px 32px #2575fc33;
+	transform: translateY(-6px) scale(1.04);
+}

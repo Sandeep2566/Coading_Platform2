@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, NavLink } from 'react-router';
 import { registerUser } from '../authSlice';
+import '../App.css';
 
 const signupSchema = z.object({
   firstName: z.string().min(3, "Minimum character should be 3"),
@@ -35,12 +36,17 @@ function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-base-200"> {/* Added a light bg for contrast */}
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title justify-center text-3xl mb-6">Leetcode</h2> {/* Added mb-6 for spacing */}
+    <div className="min-h-screen flex flex-col justify-center items-center leetcode-auth-bg">
+      <div className="auth-card">
+        <div className="auth-logo">
+          <img src="https://leetcode.com/static/images/LeetCode_logo_rvs.png" alt="LeetCode Logo" className="auth-logo-img" />
+        </div>
+        <div className="auth-tabs">
+          <NavLink to="/login" className={({isActive}) => isActive ? 'auth-tab active' : 'auth-tab'}>Login</NavLink>
+          <NavLink to="/signup" className={({isActive}) => isActive ? 'auth-tab active' : 'auth-tab'}>Sign Up</NavLink>
+        </div>
+        <div className="auth-card-body">
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* First Name Field */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">First Name</span>
@@ -55,8 +61,6 @@ function Signup() {
                 <span className="text-error text-sm mt-1">{errors.firstName.message}</span>
               )}
             </div>
-
-            {/* Email Field */}
             <div className="form-control mt-4">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -64,15 +68,13 @@ function Signup() {
               <input
                 type="email"
                 placeholder="john@example.com"
-                className={`input input-bordered w-full ${errors.emailId ? 'input-error' : ''}`} // Ensure w-full for consistency
+                className={`input input-bordered w-full ${errors.emailId ? 'input-error' : ''}`}
                 {...register('emailId')}
               />
               {errors.emailId && (
                 <span className="text-error text-sm mt-1">{errors.emailId.message}</span>
               )}
             </div>
-
-            {/* Password Field with Toggle */}
             <div className="form-control mt-4">
               <label className="label">
                 <span className="label-text">Password</span>
@@ -81,15 +83,14 @@ function Signup() {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  // Added pr-10 (padding-right) to make space for the button
                   className={`input input-bordered w-full pr-10 ${errors.password ? 'input-error' : ''}`}
                   {...register('password')}
                 />
                 <button
                   type="button"
-                  className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 hover:text-gray-700" // Added transform for better centering, styling
+                  className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                   onClick={() => setShowPassword(!showPassword)}
-                  aria-label={showPassword ? "Hide password" : "Show password"} // Accessibility
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,29 +108,26 @@ function Signup() {
                 <span className="text-error text-sm mt-1">{errors.password.message}</span>
               )}
             </div>
-
-            {/* Submit Button */}
             <div className="form-control mt-8 flex justify-center"> 
               <button
                 type="submit"
-                className={`btn btn-primary ${loading ? 'loading' : ''}`}
+                className={`btn btn-primary w-full ${loading ? 'loading' : ''}`}
                 disabled={loading}
               >
                 {loading ? 'Signing Up...' : 'Sign Up'}
               </button>
             </div>
           </form>
-
-          {/* Login Redirect */}
-          <div className="text-center mt-6"> {/* Increased mt for spacing */}
-            <span className="text-sm">
-              Already have an account?{' '}
-              <NavLink to="/login" className="link link-primary">
-                Login
-              </NavLink>
-            </span>
-          </div>
         </div>
+      </div>
+      <div className="leetcode-auth-footer">
+        <div className="leetcode-auth-footer-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="#F5F6FA"/>
+            <path d="M20 12C16.13 12 13 15.13 13 19C13 22.87 16.13 26 20 26C23.87 26 27 22.87 27 19C27 15.13 23.87 12 20 12ZM20 24C17.24 24 15 21.76 15 19C15 16.24 17.24 14 20 14C22.76 14 25 16.24 25 19C25 21.76 22.76 24 20 24Z" fill="#FF6B6B"/>
+          </svg>
+        </div>
+        <div className="leetcode-auth-footer-text">Made with <span style={{color:'#FF6B6B'}}>&hearts;</span> for coders</div>
       </div>
     </div>
   );
